@@ -39,6 +39,18 @@ A possible layout could be:
 +-----------------------------+
 ```
 
+## Review Criteria
+
+In general, we will review submissions based on the following criteria:
+
+- It works as the spec states
+- Atomic commits with well-written commit messages
+- Thoughtful domain modelling and separation of concerns
+- Attention to principles of object-oriented / functional programming
+- Idiomatic code for the language
+- Tests
+
+
 ## Install and start the server
 
 ```
