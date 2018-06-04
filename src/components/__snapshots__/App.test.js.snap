@@ -7,7 +7,7 @@ exports[`renders the app 1`] = `
   <header>
     Counter App
     <pre>
-      {}
+      {"counters":[]}
     </pre>
   </header>
 </div>

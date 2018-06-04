@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 
 const App = (props) => (
@@ -9,5 +10,9 @@ const App = (props) => (
     </header>
   </div>
 );
+
+App.propTypes = {
+  counters: PropTypes.array.isRequired,
+};
 
 export default App;

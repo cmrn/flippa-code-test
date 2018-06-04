@@ -3,6 +3,6 @@ import renderer from 'react-test-renderer';
 import App from './App';
 
 it('renders the app', () => {
-  const tree = renderer.create(<App />);
+  const tree = renderer.create(<App counters={[]} />);
   expect(tree).toMatchSnapshot();
 });
