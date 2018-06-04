@@ -4,8 +4,14 @@
   "description": "flippa front end test",
   "main": "index.js",
   "scripts": {
-    "start" : "node index.js"
+    "start": "node index.js",
+    "develop": "npm-run-all --parallel develop:*",
+    "develop:api": "cross-env PORT=4000 node index.js",
+    "develop:react": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom"
   },
+  "proxy": "http://localhost:4000",
   "keywords": [
     "sitepoint"
   ],
@@ -14,8 +20,13 @@
   "dependencies": {
     "body-parser": "^1.10.1",
     "compression": "^1.3.0",
+    "cross-env": "^5.1.6",
     "express": "^4.11.0",
     "lodash": "^2.4.1",
-    "morgan": "^1.5.1"
+    "morgan": "^1.5.1",
+    "npm-run-all": "^4.1.3",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-scripts": "^1.1.4"
   }
 }

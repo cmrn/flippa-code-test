@@ -13,13 +13,12 @@ app.use(compression());
 
 function sendFile(name) {
   return function(req, res) {
-    res.sendFile(__dirname + "/static/" + name);
+    res.sendFile(__dirname + "/build/" + name);
   };
 }
 
 app.get("/", sendFile("index.html"));
-app.get("/app.js", sendFile("app.js"));
-app.get("/app.css", sendFile("app.css"));
+app.use(express.static('build'));
 
 // [json] GET /api/v1/counters
 // => [

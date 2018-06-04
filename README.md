@@ -1,3 +1,15 @@
+# Cameron's Submission - FLIPPA FRONTEND TEST
+
+## How to run
+Remember to do an `npm install` after cloning or pulling this repo.
+
+- `npm run develop` - Run the API server & frontend in development mode (hot reloading, etc)
+- `npm run test`  - Run tests and validate snaps
+- `npm run build` - Build a production build (pls don't use this in production)
+- `npm run start` - Serve the API and production build. Make sure you run `npm run build` first.
+
+----
+
 # FLIPPA FRONTEND TEST
 
 You need to create a simple counter application that can do the following:
