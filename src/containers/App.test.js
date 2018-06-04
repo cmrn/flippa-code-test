@@ -7,15 +7,16 @@ const data = [
   {id: "asdf", title: "bob", count: 1},
   {id: "qwer", title: "steve", count: -1}
 ];
+const mockApi = () => jest.fn().mockImplementation(() => Promise.resolve(data));
+api.getCounters = mockApi();
+api.addCounter = mockApi();
 
-api.getCounters = jest.fn().mockImplementation(() => Promise.resolve(data));
-
-it('calls the API when mounted', async () => {
+it('calls the API when mounted', () => {
   const tree = renderer.create(<App />);
   expect(api.getCounters.mock.calls.length).toBe(1);
 });
 
-it('initialises child with an empty array of counters', async () => {
+it('initialises child with an empty array of counters', () => {
   const tree = renderer.create(<App />);
   expect(tree.root.children[0].props.counters).toEqual([]);
 });
@@ -24,4 +25,12 @@ it('passes counters to the child component once API returns', async () => {
   const tree = renderer.create(<App />);
   await api.getCounters(); // force test to wait until after API returns data
   expect(tree.root.children[0].props.counters).toEqual(data);
+});
+
+it('calls addCounter when onAdd callback is triggered', () => {
+  const counterTitle = 'some title';
+  const tree = renderer.create(<App />);
+  tree.root.children[0].props.onAdd(counterTitle);
+  expect(api.addCounter.mock.calls.length).toEqual(1);
+  expect(api.addCounter.mock.calls[0][0]).toEqual(counterTitle);
 });

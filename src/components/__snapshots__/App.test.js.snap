@@ -6,9 +6,14 @@ exports[`renders the app 1`] = `
 >
   <header>
     Counter App
-    <pre>
-      {"counters":[]}
-    </pre>
+    <button
+      onClick={[Function]}
+    >
+      Add Counter
+    </button>
+    <code>
+      []
+    </code>
   </header>
 </div>
 `;
