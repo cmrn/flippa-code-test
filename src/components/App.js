@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
 
-const App = () => (
+const App = (props) => (
   <div className="App">
     <header>
-      Hello World
+      Counter App
+      <pre>{JSON.stringify(props)}</pre>
     </header>
   </div>
 );

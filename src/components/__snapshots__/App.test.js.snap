@@ -5,7 +5,10 @@ exports[`renders the app 1`] = `
   className="App"
 >
   <header>
-    Hello World
+    Counter App
+    <pre>
+      {}
+    </pre>
   </header>
 </div>
 `;
