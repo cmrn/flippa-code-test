@@ -5,8 +5,8 @@ Remember to do an `npm install` after cloning or pulling this repo.
 
 - `npm run develop` - Run the API server & frontend in development mode (hot reloading, etc)
 - `npm run test`  - Run tests and validate snaps
-- `npm run build` - Build a production build (pls don't use this in production)
-- `npm run start` - Serve the API and production build. Make sure you run `npm run build` first.
+- `npm run build` - Build a production build
+- `npm run start` - Serve the API with the built frontend from `/build/`. Make sure you run `npm run build` first.
 
 ----
 
