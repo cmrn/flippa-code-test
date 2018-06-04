@@ -1,5 +1,6 @@
 import React from 'react';
 import App from '../components/App';
+import { getCounters } from '../api';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -7,8 +8,9 @@ class AppContainer extends React.Component {
     this.state = { counters: [] };
   }
 
-  componentDidMount() {
-    this.setState({ counters: [{id: "asdf", title: "bob", count: 1}] });
+  async componentDidMount() {
+    const counters = await getCounters();
+    this.setState({ counters: counters });
   }
 
   render() {
