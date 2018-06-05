@@ -1,32 +1,29 @@
 import React from 'react';
 import App from '../components/App';
-import { getCounters, addCounter } from '../api';
+import { view } from 'react-easy-state';
+import counterStore from '../counterStore';
 
 class AppContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { counters: [] };
-
     this.handleAdd = this.handleAdd.bind(this);
   }
 
-  async componentDidMount() {
-    const counters = await getCounters();
-    this.setState({ counters: counters });
+  componentDidMount() {
+    counterStore.load();
   }
 
-  async handleAdd(title) {
-    const counters = await addCounter(title);
-    this.setState({ counters: counters });
+  handleAdd(title) {
+    counterStore.add(title);
   }
 
   render() {
     return <App 
-      counters={this.state.counters} 
+      counters={counterStore.counters} 
       onAdd={this.handleAdd} 
       onChange={()=>{}}
     />;
   }
 }
 
-export default AppContainer;
+export default view(AppContainer);
