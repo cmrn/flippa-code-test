@@ -9,7 +9,8 @@ const CounterContainer = ({ id }) => {
     <Counter
       title={counter.title}
       count={counter.count}
-      onChange={()=>{}}
+      onIncrement={() => {}}
+      onDecrement={() => {}}
     />
   );
 };
