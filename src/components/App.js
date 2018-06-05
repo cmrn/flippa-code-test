@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
+import AddCounter from './AddCounter';
 
 const App = ({ counters, onAdd }) => (
   <div className="App">
     <header>
       Counter App
-      <button onClick={() => onAdd('foo')}>Add Counter</button>
+      <AddCounter onAdd={onAdd} />
       <code>{JSON.stringify(counters)}</code>
     </header>
   </div>

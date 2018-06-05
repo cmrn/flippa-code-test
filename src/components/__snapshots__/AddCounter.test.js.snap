@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a text box and button 1`] = `
+<form
+  className="AddCounter"
+  onSubmit={[Function]}
+>
+  <input
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <input
+    type="submit"
+    value="Add Counter"
+  />
+</form>
+`;

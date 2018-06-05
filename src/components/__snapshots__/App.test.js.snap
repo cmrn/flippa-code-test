@@ -6,11 +6,9 @@ exports[`renders the app 1`] = `
 >
   <header>
     Counter App
-    <button
-      onClick={[Function]}
-    >
-      Add Counter
-    </button>
+    <AddCounter
+      onAdd={[Function]}
+    />
     <code>
       []
     </code>
