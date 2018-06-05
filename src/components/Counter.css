@@ -1,13 +1,12 @@
 .Counter {
   padding: 10px 0;
   display: flex;
-  border-bottom: 1px solid #ccc;
-  align-items: center;
+  border-bottom: 1px solid lightgray;
   font-size: 20px;
 }
 
 .Counter:first-of-type {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid lightgray;
 }
 
 .Counter-title {
@@ -22,6 +21,10 @@
 .Counter-button {
   border: none;
   background: none;
+}
+
+.Counter-button:hover {
+  cursor: pointer;
 }
 
 .Counter-delete {
