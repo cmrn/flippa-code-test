@@ -44,7 +44,8 @@ exports[`renders the counter with title, count, add, subtract, and remove button
     A title
   </span>
   <button
-    className="Counter-button"
+    className="Counter-button Counter-subtract"
+    onClick={[Function]}
   >
     <FontAwesomeIcon
       border={false}
@@ -82,7 +83,8 @@ exports[`renders the counter with title, count, add, subtract, and remove button
     161
   </span>
   <button
-    className="Counter-button"
+    className="Counter-button Counter-add"
+    onClick={[Function]}
   >
     <FontAwesomeIcon
       border={false}

@@ -25,10 +25,12 @@ exports[`with some counters renders the title, AddCounter, and each Counter 1`] 
   />
   <Counter
     count={1}
+    onChange={[Function]}
     title="bob"
   />
   <Counter
     count={2}
+    onChange={[Function]}
     title="steve"
   />
 </div>

@@ -9,9 +9,14 @@ const App = ({ counters, onAdd }) => (
     <h1>Counter App</h1>
 
     <AddCounter onAdd={onAdd} />
-    
+
     {counters.map(counter => 
-      <Counter key={counter.id} title={counter.title} count={counter.count} /> 
+      <Counter 
+        key={counter.id} 
+        title={counter.title} 
+        count={counter.count} 
+        onChange={() => {}}
+      /> 
     )}
   </div>
 );
