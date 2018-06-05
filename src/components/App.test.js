@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
 import AddCounter from './AddCounter';
-import Counter from './Counter';
+import Counter from '../containers/Counter';
 
 const dummyProps = {
   counters: [],
@@ -35,15 +35,5 @@ describe("with some counters", () => {
   it('renders the title, AddCounter, and each Counter', () => {
     const wrapper = shallow(<App {...dummyProps} counters={counters} />);
     expect(wrapper).toMatchSnapshot();
-  });
-
-  it("propogates the onChange event up with counter id", () => {
-    const changeHandler = jest.fn();
-    const eventValue = 123;
-    const wrapper = shallow(<App {...dummyProps} counters={counters} onChange={changeHandler} />);
-    wrapper.find(Counter).first().props().onChange(eventValue);
-    expect(changeHandler.mock.calls.length).toBe(1);
-    expect(changeHandler.mock.calls[0][0]).toEqual(counters[0].id);
-    expect(changeHandler.mock.calls[0][1]).toEqual(eventValue);
   });
 });

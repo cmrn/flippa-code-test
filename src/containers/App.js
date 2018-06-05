@@ -20,8 +20,7 @@ class AppContainer extends React.Component {
   render() {
     return <App 
       counters={counterStore.counters} 
-      onAdd={this.handleAdd} 
-      onChange={()=>{}}
+      onAdd={this.handleAdd}
     />;
   }
 }

@@ -23,17 +23,13 @@ exports[`with some counters renders the title, AddCounter, and each Counter 1`] 
   <AddCounter
     onAdd={[Function]}
   />
-  <Counter
-    count={1}
+  <CounterContainer
+    id="asdf"
     key="asdf"
-    onChange={[Function]}
-    title="bob"
   />
-  <Counter
-    count={2}
+  <CounterContainer
+    id="qwer"
     key="qwer"
-    onChange={[Function]}
-    title="steve"
   />
 </div>
 `;
