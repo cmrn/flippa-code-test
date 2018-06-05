@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the counter with title, count, add, subtract, and remove buttons 1`] = `
+<div
+  className="Counter"
+>
+  <button
+    className="Counter-button Counter-delete"
+  >
+    <FontAwesomeIcon
+      border={false}
+      className=""
+      color="crimson"
+      fixedWidth={false}
+      flip={null}
+      icon={
+        Object {
+          "icon": Array [
+            352,
+            512,
+            Array [],
+            "f00d",
+            "M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z",
+          ],
+          "iconName": "times",
+          "prefix": "fas",
+        }
+      }
+      listItem={false}
+      mask={null}
+      name=""
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size={null}
+      spin={false}
+      symbol={false}
+      transform={null}
+    />
+  </button>
+  <span
+    className="Counter-title"
+  >
+    A title
+  </span>
+  <button
+    className="Counter-button"
+  >
+    <FontAwesomeIcon
+      border={false}
+      className=""
+      fixedWidth={false}
+      flip={null}
+      icon={
+        Object {
+          "icon": Array [
+            448,
+            512,
+            Array [],
+            "f068",
+            "M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z",
+          ],
+          "iconName": "minus",
+          "prefix": "fas",
+        }
+      }
+      listItem={false}
+      mask={null}
+      name=""
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size={null}
+      spin={false}
+      symbol={false}
+      transform={null}
+    />
+  </button>
+  <span
+    className="Counter-count"
+  >
+    161
+  </span>
+  <button
+    className="Counter-button"
+  >
+    <FontAwesomeIcon
+      border={false}
+      className=""
+      fixedWidth={false}
+      flip={null}
+      icon={
+        Object {
+          "icon": Array [
+            448,
+            512,
+            Array [],
+            "f067",
+            "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z",
+          ],
+          "iconName": "plus",
+          "prefix": "fas",
+        }
+      }
+      listItem={false}
+      mask={null}
+      name=""
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size={null}
+      spin={false}
+      symbol={false}
+      transform={null}
+    />
+  </button>
+</div>
+`;
