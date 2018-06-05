@@ -23,8 +23,8 @@ class AddCounter extends React.Component {
   render() {
     return (
       <form className="AddCounter" onSubmit={this.handleSubmit}>
-        <input type="text" value={this.state.title} onChange={this.handleTitleChange} />
-        <input type="submit" value="Add Counter" />
+        <input className="AddCounter-title" type="text" value={this.state.title} onChange={this.handleTitleChange} />
+        <input className="AddCounter-button" type="submit" value="Add Counter" />
       </form>
     );
   }
