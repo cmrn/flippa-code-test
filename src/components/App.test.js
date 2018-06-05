@@ -1,5 +1,5 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import { shallow } from 'enzyme';
 import App from './App';
 
 const counters = [
@@ -9,16 +9,14 @@ const counters = [
 
 describe("with no counters", () => {
   it('renders the title and AddCounter component', () => {
-    const renderer = new ShallowRenderer();
-    const tree = renderer.render(<App counters={[]} onAdd={() => {}} />);
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(<App counters={[]} onAdd={() => {}} />);
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
 describe("with some counters", () => {
   it('renders the title, AddCounter, and each Counter', () => {
-    const renderer = new ShallowRenderer();
-    const tree = renderer.render(<App counters={counters} onAdd={() => {}} />);
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(<App counters={counters} onAdd={() => {}} />);
+    expect(wrapper).toMatchSnapshot();
   });
 });
