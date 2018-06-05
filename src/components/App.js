@@ -4,7 +4,7 @@ import './App.css';
 import AddCounter from './AddCounter';
 import Counter from './Counter';
 
-const App = ({ counters, onAdd }) => (
+const App = ({ counters, onAdd, onChange }) => (
   <div className="App">
     <h1>Counter App</h1>
 
@@ -15,7 +15,7 @@ const App = ({ counters, onAdd }) => (
         key={counter.id} 
         title={counter.title} 
         count={counter.count} 
-        onChange={() => {}}
+        onChange={(newCount) => onChange(counter.id, newCount)}
       /> 
     )}
   </div>
@@ -24,6 +24,7 @@ const App = ({ counters, onAdd }) => (
 App.propTypes = {
   counters: PropTypes.array.isRequired,
   onAdd: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default App;
