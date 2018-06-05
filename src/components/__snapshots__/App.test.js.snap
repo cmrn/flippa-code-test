@@ -1,17 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the app 1`] = `
+exports[`with no counters renders the title and AddCounter component 1`] = `
 <div
   className="App"
 >
-  <header>
+  <h1>
     Counter App
-    <AddCounter
-      onAdd={[Function]}
-    />
-    <code>
-      []
-    </code>
-  </header>
+  </h1>
+  <AddCounter
+    onAdd={[Function]}
+  />
+</div>
+`;
+
+exports[`with some counters renders the title, AddCounter, and each Counter 1`] = `
+<div
+  className="App"
+>
+  <h1>
+    Counter App
+  </h1>
+  <AddCounter
+    onAdd={[Function]}
+  />
+  <Counter
+    count={1}
+    title="bob"
+  />
+  <Counter
+    count={2}
+    title="steve"
+  />
 </div>
 `;
