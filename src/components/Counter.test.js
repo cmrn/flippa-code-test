@@ -8,6 +8,7 @@ const dummyProps = {
   count: 161,
   onDecrement: () => {},
   onIncrement: () => {},
+  onDelete: () => {},
 }
 
 it('renders the counter with title, count, add, subtract, and remove buttons', () => {
@@ -29,6 +30,16 @@ describe('when add button is pressed', () => {
     const handler = jest.fn();
     const wrapper = shallow(<Counter {...dummyProps} onIncrement={handler} />);
     wrapper.find('.Counter-add').simulate('click');
+    expect(handler.mock.calls.length).toBe(1);
+  });
+});
+
+
+describe('when delete button is pressed', () => {
+  it('calls onDelete handler', () => {
+    const handler = jest.fn();
+    const wrapper = shallow(<Counter {...dummyProps} onDelete={handler} />);
+    wrapper.find('.Counter-delete').simulate('click');
     expect(handler.mock.calls.length).toBe(1);
   });
 });

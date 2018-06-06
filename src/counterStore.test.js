@@ -10,6 +10,7 @@ api.getCounters = mockApi();
 api.addCounter = mockApi();
 api.incrementCounter = mockApi();
 api.decrementCounter = mockApi();
+api.deleteCounter = mockApi();
 
 afterEach(() => {
   counterStore.reset();
@@ -66,6 +67,21 @@ describe('decrement', () => {
   it('updates the counters with the response', async () => {
     expect(counterStore.counters).not.toEqual(data);
     await counterStore.decrement('aaa');
+    expect(counterStore.counters).toEqual(data);
+  });
+});
+
+describe('delete', () => {
+  it('calls the API to delete the given counter', async () => {
+    const id = '123';
+    await counterStore.delete(id);
+    expect(api.deleteCounter.mock.calls.length).toEqual(1);
+    expect(api.deleteCounter.mock.calls[0][0]).toEqual(id);
+  });
+
+  it('updates the counters with the response', async () => {
+    expect(counterStore.counters).not.toEqual(data);
+    await counterStore.delete('aaa');
     expect(counterStore.counters).toEqual(data);
   });
 });

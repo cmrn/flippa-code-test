@@ -11,6 +11,7 @@ const CounterContainer = ({ id }) => {
       count={counter.count}
       onIncrement={() => counterStore.increment(counter.id)}
       onDecrement={() => counterStore.decrement(counter.id)}
+      onDelete={() => counterStore.delete(counter.id)}
     />
   );
 };

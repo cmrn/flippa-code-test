@@ -6,9 +6,9 @@ import faMinus from '@fortawesome/fontawesome-free-solid/faMinus';
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
 import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 
-const Counter = ({ title, count, onDecrement, onIncrement }) => (
+const Counter = ({ title, count, onDecrement, onIncrement, onDelete }) => (
   <div className="Counter">
-    <button className="Counter-button Counter-delete">
+    <button className="Counter-button Counter-delete" onClick={onDelete}>
       <FontAwesomeIcon color="crimson" icon={faTimes} />
     </button>
     <span className="Counter-title">{title}</span>
@@ -27,6 +27,7 @@ Counter.propTypes = {
   count: PropTypes.number.isRequired,
   onIncrement: PropTypes.func.isRequired,
   onDecrement: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default Counter;

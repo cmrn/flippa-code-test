@@ -6,6 +6,7 @@ exports[`renders the counter with title, count, add, subtract, and remove button
 >
   <button
     className="Counter-button Counter-delete"
+    onClick={[Function]}
   >
     <FontAwesomeIcon
       border={false}

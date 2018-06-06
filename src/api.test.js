@@ -92,7 +92,6 @@ describe('incrementCounter', () => {
   });
 });
 
-
 describe('decrementCounter', () => {
   const id = 'foo';
   const subject = () => api.decrementCounter(id);
@@ -103,6 +102,37 @@ describe('decrementCounter', () => {
     expect(fetch.mock.calls.length).toBe(1);
     expect(fetch.mock.calls[0][0]).toEqual('/api/v1/counter/dec');
     expect(fetch.mock.calls[0][1]).toMatchObject({ method: 'POST' });
+  });
+
+  it('passes the counter title as JSON in the request body', async () => {
+    await subject();
+    expect(fetch.mock.calls[0][1]).toMatchObject({ 
+      body: JSON.stringify({id: id}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  });
+
+  it('returns the data as an object', async () => {
+    const data = [ { id: "asdf", title: "bob", count: 1 } ];
+    fetch.mockResponseOnce(JSON.stringify(data));
+    const response = await subject();
+    
+    expect(response).toEqual(data);
+  });
+});
+
+describe('deleteCounter', () => {
+  const id = 'foo';
+  const subject = () => api.deleteCounter(id);
+
+  it('calls the correct endpoint as DELETE', async () => {
+    await subject();
+    
+    expect(fetch.mock.calls.length).toBe(1);
+    expect(fetch.mock.calls[0][0]).toEqual('/api/v1/counter');
+    expect(fetch.mock.calls[0][1]).toMatchObject({ method: 'DELETE' });
   });
 
   it('passes the counter title as JSON in the request body', async () => {

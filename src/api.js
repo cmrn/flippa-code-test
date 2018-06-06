@@ -1,7 +1,6 @@
 const API_URL = '/api/v1';
 
-const postOptions = {
-  method: 'POST',
+const baseOptions = {
   headers: {
     'Content-Type': 'application/json'
   }
@@ -14,7 +13,8 @@ export async function getCounters() {
 
 export async function addCounter(title) {
   const options = {
-    ...postOptions,
+    ...baseOptions,
+    method: 'POST',
     body: JSON.stringify({
       title: title,
     }),
@@ -25,7 +25,8 @@ export async function addCounter(title) {
 
 export async function incrementCounter(id) {
   const options = {
-    ...postOptions,
+    ...baseOptions,
+    method: 'POST',
     body: JSON.stringify({
       id: id,
     }),
@@ -36,11 +37,24 @@ export async function incrementCounter(id) {
 
 export async function decrementCounter(id) {
   const options = {
-    ...postOptions,
+    ...baseOptions,
+    method: 'POST',
     body: JSON.stringify({
       id: id,
     }),
   }
   const response = await fetch(`${API_URL}/counter/dec`, options);
+  return response.json();
+}
+
+export async function deleteCounter(id) {
+  const options = {
+    ...baseOptions,
+    method: 'DELETE',
+    body: JSON.stringify({
+      id: id,
+    }),
+  }
+  const response = await fetch(`${API_URL}/counter`, options);
   return response.json();
 }

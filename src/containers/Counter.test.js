@@ -14,6 +14,7 @@ beforeEach(() => {
   counterStore.add = jest.fn();
   counterStore.increment = jest.fn();
   counterStore.decrement = jest.fn();
+  counterStore.delete = jest.fn();
 });
 
 it('loads counter from counterStore by id', () => {
@@ -21,7 +22,7 @@ it('loads counter from counterStore by id', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-describe('when increment callback is triggered', () => {
+describe('when increment event is triggered', () => {
   it('calls counterStore.increment() with counter ID', () => {
     const id = 'qwer';
     const wrapper = shallow(<Counter id={id} />);
@@ -32,7 +33,7 @@ describe('when increment callback is triggered', () => {
   });
 });
 
-describe('when decrement callback is triggered', () => {
+describe('when decrement event is triggered', () => {
   it('calls counterStore.decrement() with counter ID', () => {
     const id = 'qwer';
     const wrapper = shallow(<Counter id={id} />);
@@ -40,5 +41,16 @@ describe('when decrement callback is triggered', () => {
     wrapper.props().onDecrement();
     expect(counterStore.decrement.mock.calls.length).toBe(1);
     expect(counterStore.decrement.mock.calls[0][0]).toBe(id);
+  });
+});
+
+describe('when delete event is triggered', () => {
+  it('calls counterStore.delete() with counter ID', () => {
+    const id = 'qwer';
+    const wrapper = shallow(<Counter id={id} />);
+    expect(counterStore.delete.mock.calls.length).toBe(0);
+    wrapper.props().onDelete();
+    expect(counterStore.delete.mock.calls.length).toBe(1);
+    expect(counterStore.delete.mock.calls[0][0]).toBe(id);
   });
 });
