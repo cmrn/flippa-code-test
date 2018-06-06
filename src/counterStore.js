@@ -21,13 +21,14 @@ const counterStore = store({
     handleApiResponse(response);
   },
   async increment(id) {
-    const counter = counterStore.counters[id];
-    if(!counter) throw new Error(`invalid counter id ${id}`);
+    const counter = counterStore.get(id);
     counter.count++;
     const response = await incrementCounter(id);
     handleApiResponse(response);
   },
   async decrement(id) {
+    const counter = counterStore.get(id);
+    counter.count--;
     const response = await decrementCounter(id);
     handleApiResponse(response);
   },
@@ -35,6 +36,11 @@ const counterStore = store({
     const response = await deleteCounter(id);
     handleApiResponse(response);
   },
+  get(id) {
+    const counter = counterStore.counters[id];
+    if(!counter) throw new Error(`invalid counter id ${id}`);
+    return counter;
+  }
 });
 
 function handleApiResponse(countersArray) {

@@ -98,6 +98,17 @@ describe('with a counter', () => {
       await subject();
       expect(counterStore.counters).toEqual(expectedCounters);
     });
+
+    it('optimistically decrements count before API responds', () => {
+      expect(counterStore.counters[id].count).toEqual(1);
+      subject();
+      expect(counterStore.counters[id].count).toEqual(0);
+    });
+
+    it('throws an error if the id is invalid', () => {
+      id = 'invalid';
+      return expect(subject()).rejects.toBeInstanceOf(Error);
+    });
   });
 
   describe('delete', () => {
