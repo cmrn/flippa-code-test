@@ -33,74 +33,80 @@ describe('load', () => {
 });
 
 describe('with a counter', () => {
+  let id;
 
   beforeEach(() => {
+    id = 'asdf';
     counterStore.counters = {
       asdf: {id: "asdf", title: "bob", count: 1},
     };
   });
 
   describe('add', () => {
+    const subject = () => counterStore.add();
+
     it('calls the API with the title of the new counter', async () => {
-      await counterStore.add();
+      await subject();
       expect(api.addCounter.mock.calls.length).toEqual(1);
     });
 
     it('updates the counters with the response', async () => {
       expect(counterStore.counters).not.toEqual(expectedCounters);
-      await counterStore.add();
+      await subject();
       expect(counterStore.counters).toEqual(expectedCounters);
     });
   });
 
   describe('increment', () => {
+    const subject = () => counterStore.increment(id);
+
     it('calls the API to increment the given counter', async () => {
-      const id = 'asdf';
-      await counterStore.increment(id);
+      await subject();
       expect(api.incrementCounter.mock.calls.length).toEqual(1);
       expect(api.incrementCounter.mock.calls[0][0]).toEqual(id);
     });
 
     it('updates the counters with the response', async () => {
       expect(counterStore.counters).not.toEqual(expectedCounters);
-      await counterStore.increment('asdf');
+      await subject();
       expect(counterStore.counters).toEqual(expectedCounters);
     });
 
-    it('optimistically updates store before API responds', () => {
-      const id = 'asdf';
+    it('optimistically increments count before API responds', () => {
       expect(counterStore.counters[id].count).toEqual(1);
-      counterStore.increment('asdf');
+      subject();
       expect(counterStore.counters[id].count).toEqual(2);
     });
   });
 
   describe('decrement', () => {
+    const subject = () => counterStore.decrement(id);
+
     it('calls the API to decrement the given counter', async () => {
-      const id = 'asdf';
-      await counterStore.decrement(id);
+      await subject();
       expect(api.decrementCounter.mock.calls.length).toEqual(1);
       expect(api.decrementCounter.mock.calls[0][0]).toEqual(id);
     });
 
     it('updates the counters with the response', async () => {
       expect(counterStore.counters).not.toEqual(expectedCounters);
-      await counterStore.decrement('asdf');
+      await subject();
       expect(counterStore.counters).toEqual(expectedCounters);
     });
   });
 
   describe('delete', () => {
+    const subject = () => counterStore.delete(id);
+
     it('calls the API to delete the given counter', async () => {
-      const id = 'asdf';
-      await counterStore.delete(id);
+      await subject();
       expect(api.deleteCounter.mock.calls.length).toEqual(1);
       expect(api.deleteCounter.mock.calls[0][0]).toEqual(id);
     });
 
     it('updates the counters with the response', async () => {
       expect(counterStore.counters).not.toEqual(expectedCounters);
-      await counterStore.delete('asdf');
+      await subject();
       expect(counterStore.counters).toEqual(expectedCounters);
     });
   });
