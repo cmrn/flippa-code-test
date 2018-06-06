@@ -26,7 +26,7 @@ class AddCounter extends React.Component {
     return (
       <form {...props} className={cnames("AddCounter", className)} onSubmit={this.handleSubmit}>
         <input className="AddCounter-title" type="text" value={this.state.title} onChange={this.handleTitleChange} />
-        <input className="AddCounter-button" type="submit" value="Add Counter" />
+        <input className="AddCounter-button" type="submit" value="Add Counter" disabled={!this.state.title} />
       </form>
     );
   }

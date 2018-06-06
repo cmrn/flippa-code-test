@@ -3,7 +3,6 @@
 exports[`renders a text box and button 1`] = `
 <form
   className="AddCounter"
-  onAdd={[Function]}
   onSubmit={[Function]}
 >
   <input
@@ -14,6 +13,7 @@ exports[`renders a text box and button 1`] = `
   />
   <input
     className="AddCounter-button"
+    disabled={true}
     type="submit"
     value="Add Counter"
   />
