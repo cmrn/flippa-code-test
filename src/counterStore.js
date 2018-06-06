@@ -21,6 +21,9 @@ const counterStore = store({
     handleApiResponse(response);
   },
   async increment(id) {
+    const counter = counterStore.counters[id];
+    if(!counter) throw new Error(`invalid counter id ${id}`);
+    counter.count++;
     const response = await incrementCounter(id);
     handleApiResponse(response);
   },
