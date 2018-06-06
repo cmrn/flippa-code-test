@@ -33,6 +33,7 @@ const counterStore = store({
     handleApiResponse(response);
   },
   async delete(id) {
+    delete counterStore.counters[id];
     const response = await deleteCounter(id);
     handleApiResponse(response);
   },

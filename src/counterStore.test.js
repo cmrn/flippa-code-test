@@ -125,5 +125,11 @@ describe('with a counter', () => {
       await subject();
       expect(counterStore.counters).toEqual(expectedCounters);
     });
+
+    it('optimistically deletes counter before API responds', () => {
+      expect(counterStore.counters[id]).toBeDefined();
+      subject();
+      expect(counterStore.counters[id]).toBeUndefined();
+    });
   });
 });
