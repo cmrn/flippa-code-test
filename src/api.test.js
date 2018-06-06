@@ -3,6 +3,38 @@ import * as api from './api';
 
 global.fetch = mockFetch;
 
+function itReturnsDataAsObject(subject) {
+  it('returns the data as an object', async () => {
+    const data = [ { id: "asdf", title: "bob", count: 1 } ];
+    fetch.mockResponseOnce(JSON.stringify(data));
+    const response = await subject();
+    
+    expect(response).toEqual(data);
+  });
+}
+
+function itSendsJsonPayload(subject, payload) {
+  it('sends the payload as JSON in the request body', async () => {
+    await subject();
+    expect(fetch.mock.calls[0][1]).toMatchObject({ 
+      body: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  });
+}
+
+function itCallsEndpoint(subject, endpoint, method) {
+  it(`calls the '${endpoint}' endpoint as ${method || 'GET'}`, async () => {
+    await subject();
+    
+    expect(fetch.mock.calls.length).toBe(1);
+    expect(fetch.mock.calls[0][0]).toEqual(endpoint);
+    if(method) expect(fetch.mock.calls[0][1]).toMatchObject({ method: method });
+  });
+}
+
 beforeEach(() => {
   fetch.mockResponse(JSON.stringify([]));
 })
@@ -14,142 +46,43 @@ afterEach(() => {
 describe('getCounters', () => {
   const subject = api.getCounters;
 
-  it('calls the correct endpoint', async () => {
-    await subject();
-    
-    expect(fetch.mock.calls.length).toBe(1);
-    expect(fetch.mock.calls[0][0]).toEqual('/api/v1/counters');
-  });
-
-  it('returns the data as an object', async () => {
-    const data = [ { id: "asdf", title: "bob", count: 1 } ];
-    fetch.mockResponseOnce(JSON.stringify(data));
-    const response = await subject();
-    
-    expect(response).toEqual(data);
-  });
+  itCallsEndpoint(subject, '/api/v1/counters');
+  itReturnsDataAsObject(subject);
 });
 
 describe('addCounter', () => {
   const title = 'foo';
   const subject = () => api.addCounter(title);
 
-  it('calls the correct endpoint as POST', async () => {
-    await subject();
-    
-    expect(fetch.mock.calls.length).toBe(1);
-    expect(fetch.mock.calls[0][0]).toEqual('/api/v1/counter');
-    expect(fetch.mock.calls[0][1]).toMatchObject({ method: 'POST' });
-  });
-
-  it('passes the counter title as JSON in the request body', async () => {
-    await subject();
-    expect(fetch.mock.calls[0][1]).toMatchObject({ 
-      body: JSON.stringify({title: title}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  });
-
-  it('returns the data as an object', async () => {
-    const data = [ { id: "asdf", title: "bob", count: 1 } ];
-    fetch.mockResponseOnce(JSON.stringify(data));
-    const response = await subject();
-    
-    expect(response).toEqual(data);
-  });
+  itCallsEndpoint(subject, '/api/v1/counter', 'POST');
+  itSendsJsonPayload(subject, {title: title});
+  itReturnsDataAsObject(subject);
 });
 
 describe('incrementCounter', () => {
   const id = 'foo';
   const subject = () => api.incrementCounter(id);
 
-  it('calls the correct endpoint as POST', async () => {
-    await subject();
-    
-    expect(fetch.mock.calls.length).toBe(1);
-    expect(fetch.mock.calls[0][0]).toEqual('/api/v1/counter/inc');
-    expect(fetch.mock.calls[0][1]).toMatchObject({ method: 'POST' });
-  });
-
-  it('passes the counter title as JSON in the request body', async () => {
-    await subject();
-    expect(fetch.mock.calls[0][1]).toMatchObject({ 
-      body: JSON.stringify({id: id}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  });
-
-  it('returns the data as an object', async () => {
-    const data = [ { id: "asdf", title: "bob", count: 1 } ];
-    fetch.mockResponseOnce(JSON.stringify(data));
-    const response = await subject();
-    
-    expect(response).toEqual(data);
-  });
+  itCallsEndpoint(subject, '/api/v1/counter/inc', 'POST');
+  itSendsJsonPayload(subject, {id: id});
+  itReturnsDataAsObject(subject);
 });
 
 describe('decrementCounter', () => {
   const id = 'foo';
   const subject = () => api.decrementCounter(id);
 
-  it('calls the correct endpoint as POST', async () => {
-    await subject();
-    
-    expect(fetch.mock.calls.length).toBe(1);
-    expect(fetch.mock.calls[0][0]).toEqual('/api/v1/counter/dec');
-    expect(fetch.mock.calls[0][1]).toMatchObject({ method: 'POST' });
-  });
-
-  it('passes the counter title as JSON in the request body', async () => {
-    await subject();
-    expect(fetch.mock.calls[0][1]).toMatchObject({ 
-      body: JSON.stringify({id: id}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  });
-
-  it('returns the data as an object', async () => {
-    const data = [ { id: "asdf", title: "bob", count: 1 } ];
-    fetch.mockResponseOnce(JSON.stringify(data));
-    const response = await subject();
-    
-    expect(response).toEqual(data);
-  });
+  itCallsEndpoint(subject, '/api/v1/counter/dec', 'POST');
+  itSendsJsonPayload(subject, {id: id});
+  itReturnsDataAsObject(subject);
 });
 
 describe('deleteCounter', () => {
   const id = 'foo';
   const subject = () => api.deleteCounter(id);
 
-  it('calls the correct endpoint as DELETE', async () => {
-    await subject();
-    
-    expect(fetch.mock.calls.length).toBe(1);
-    expect(fetch.mock.calls[0][0]).toEqual('/api/v1/counter');
-    expect(fetch.mock.calls[0][1]).toMatchObject({ method: 'DELETE' });
-  });
 
-  it('passes the counter title as JSON in the request body', async () => {
-    await subject();
-    expect(fetch.mock.calls[0][1]).toMatchObject({ 
-      body: JSON.stringify({id: id}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  });
-
-  it('returns the data as an object', async () => {
-    const data = [ { id: "asdf", title: "bob", count: 1 } ];
-    fetch.mockResponseOnce(JSON.stringify(data));
-    const response = await subject();
-    
-    expect(response).toEqual(data);
-  });
+  itCallsEndpoint(subject, '/api/v1/counter', 'DELETE');
+  itSendsJsonPayload(subject, {id: id});
+  itReturnsDataAsObject(subject);
 });
