@@ -9,8 +9,8 @@ const CounterContainer = ({ id }) => {
     <Counter
       title={counter.title}
       count={counter.count}
-      onIncrement={() => {}}
-      onDecrement={() => {}}
+      onIncrement={() => counterStore.increment(counter.id)}
+      onDecrement={() => counterStore.decrement(counter.id)}
     />
   );
 };

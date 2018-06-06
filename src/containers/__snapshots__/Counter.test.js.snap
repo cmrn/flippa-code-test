@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loads counter from counterStore by id 1`] = `
+<Counter
+  count={-1}
+  onDecrement={[Function]}
+  onIncrement={[Function]}
+  title="steve"
+/>
+`;
