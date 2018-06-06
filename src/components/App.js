@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cnames from 'classnames';
 import './App.css';
-import AddCounter from './AddCounter';
+import AddCounter from '../containers/AddCounter';
 import Counter from '../containers/Counter';
 
-const App = ({ counters, onAdd, className, ...props }) => (
+const App = ({ counters, className, ...props }) => (
   <div {...props} className={cnames("App", className)}>
     <h1>Counter App</h1>
 
-    <AddCounter onAdd={onAdd} />
+    <AddCounter />
 
     {Object.keys(counters).map(id => <Counter key={id} id={id} />)}
   </div>
@@ -17,7 +17,6 @@ const App = ({ counters, onAdd, className, ...props }) => (
 
 App.propTypes = {
   counters: PropTypes.object.isRequired,
-  onAdd: PropTypes.func.isRequired,
   className: PropTypes.string,
 };
 

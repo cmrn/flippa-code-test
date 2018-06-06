@@ -6,22 +6,14 @@ import counterStore from '../counterStore';
 class AppContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.handleAdd = this.handleAdd.bind(this);
   }
 
   componentDidMount() {
     counterStore.load();
   }
 
-  handleAdd(title) {
-    counterStore.add(title);
-  }
-
   render() {
-    return <App {...this.props}
-      counters={counterStore.counters} 
-      onAdd={this.handleAdd}
-    />;
+    return <App {...this.props} counters={counterStore.counters} />;
   }
 }
 

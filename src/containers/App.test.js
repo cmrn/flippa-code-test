@@ -7,7 +7,6 @@ import counterStore from '../counterStore';
 beforeEach(() => {
   counterStore.reset();
   counterStore.load = jest.fn();
-  counterStore.add = jest.fn();
 });
 
 const counters = {
@@ -26,12 +25,4 @@ it('passes counters from the store to the child component', async () => {
   counterStore.counters = counters;
   const wrapper = shallow(<App />);
   expect(wrapper.props().counters).toEqual(counters);
-});
-
-it('calls counterStore.add when onAdd callback is triggered', () => {
-  const counterTitle = 'some title';
-  const wrapper = shallow(<App />);
-  wrapper.props().onAdd(counterTitle);
-  expect(counterStore.add.mock.calls.length).toEqual(1);
-  expect(counterStore.add.mock.calls[0][0]).toEqual(counterTitle);
 });

@@ -22,7 +22,7 @@ class AddCounter extends React.Component {
   }
 
   render() {
-    const { className, ...props} = this.props;
+    const { className, onAdd, ...props} = this.props;
     return (
       <form {...props} className={cnames("AddCounter", className)} onSubmit={this.handleSubmit}>
         <input className="AddCounter-title" type="text" value={this.state.title} onChange={this.handleTitleChange} />
