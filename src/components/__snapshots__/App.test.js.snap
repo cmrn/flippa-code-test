@@ -8,6 +8,7 @@ exports[`with no counters renders the title and AddCounter component 1`] = `
     Counter App
   </h1>
   <AddCounterContainer />
+  <TotalContainer />
 </div>
 `;
 
@@ -27,5 +28,6 @@ exports[`with some counters renders the title, AddCounter, and each Counter 1`] 
     id="qwer"
     key="qwer"
   />
+  <TotalContainer />
 </div>
 `;

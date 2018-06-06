@@ -4,6 +4,7 @@ import cnames from 'classnames';
 import './App.css';
 import AddCounter from '../containers/AddCounter';
 import Counter from '../containers/Counter';
+import Total from '../containers/Total';
 
 const App = ({ counterIds, className, ...props }) => (
   <div {...props} className={cnames("App", className)}>
@@ -12,6 +13,8 @@ const App = ({ counterIds, className, ...props }) => (
     <AddCounter />
 
     {counterIds.map(id => <Counter key={id} id={id} />)}
+
+    <Total />
   </div>
 );
 
