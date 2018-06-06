@@ -1,5 +1,5 @@
 import { store } from 'react-easy-state';
-import { addCounter, getCounters } from './api';
+import { addCounter, getCounters, incrementCounter, decrementCounter } from './api';
 
 const counterStore = store({
   counters: [],
@@ -12,6 +12,14 @@ const counterStore = store({
   },
   async add(title) {
     const newCounters = await addCounter(title);
+    counterStore.counters = newCounters;
+  },
+  async increment(id) {
+    const newCounters = await incrementCounter(id);
+    counterStore.counters = newCounters;
+  },
+  async decrement(id) {
+    const newCounters = await decrementCounter(id);
     counterStore.counters = newCounters;
   },
 });
