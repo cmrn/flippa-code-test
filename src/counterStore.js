@@ -1,4 +1,5 @@
 import { store } from 'react-easy-state';
+import equal from 'fast-deep-equal';
 import { 
   addCounter, 
   getCounters, 
@@ -45,11 +46,14 @@ const counterStore = store({
 });
 
 function handleApiResponse(countersArray) {
-  const countersObj = countersArray.reduce((acc, counter) => {
+  const newCounters = countersArray.reduce((acc, counter) => {
     acc[counter.id] = counter;
     return acc;
   }, {});
-  counterStore.counters = countersObj;
+
+  if(!equal(counterStore.counters, newCounters)) {
+    counterStore.counters = newCounters;
+  }
 };
 
 export default counterStore;
