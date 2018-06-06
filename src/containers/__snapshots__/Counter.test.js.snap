@@ -9,3 +9,5 @@ exports[`loads counter from counterStore by id 1`] = `
   title="steve"
 />
 `;
+
+exports[`renders nothing if counter id is invalid 1`] = `""`;

@@ -5,6 +5,7 @@ import counterStore from '../counterStore';
 
 const CounterContainer = ({ id }) => {
   const counter = counterStore.counters[id];
+  if(!counter) return null;
   return (
     <Counter
       title={counter.title}

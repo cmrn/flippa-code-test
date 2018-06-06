@@ -22,6 +22,11 @@ it('loads counter from counterStore by id', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
+it('renders nothing if counter id is invalid', () => {
+  const wrapper = shallow(<Counter id='invalid' />);
+  expect(wrapper).toMatchSnapshot();
+});
+
 describe('when increment event is triggered', () => {
   it('calls counterStore.increment() with counter ID', () => {
     const id = 'qwer';
