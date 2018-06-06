@@ -8,15 +8,15 @@ import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 
 const Counter = ({ title, count, onDecrement, onIncrement, onDelete }) => (
   <div className="Counter">
-    <button className="Counter-button Counter-delete" onClick={onDelete}>
+    <button className="Counter-button Counter-delete" aria-label="Delete" onClick={onDelete}>
       <FontAwesomeIcon color="crimson" icon={faTimes} />
     </button>
     <span className="Counter-title">{title}</span>
-    <button className="Counter-button Counter-subtract" onClick={onDecrement}>
+    <button className="Counter-button Counter-subtract" aria-label="Decrement" onClick={onDecrement}>
       <FontAwesomeIcon icon={faMinus} />
     </button>
     <span className="Counter-count">{count}</span>
-    <button className="Counter-button Counter-add" onClick={onIncrement}>
+    <button className="Counter-button Counter-add" aria-label="Increment" onClick={onIncrement}>
       <FontAwesomeIcon icon={faPlus} />
     </button>
   </div>

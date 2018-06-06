@@ -5,6 +5,7 @@ exports[`renders the counter with title, count, add, subtract, and remove button
   className="Counter"
 >
   <button
+    aria-label="Delete"
     className="Counter-button Counter-delete"
     onClick={[Function]}
   >
@@ -45,6 +46,7 @@ exports[`renders the counter with title, count, add, subtract, and remove button
     A title
   </span>
   <button
+    aria-label="Decrement"
     className="Counter-button Counter-subtract"
     onClick={[Function]}
   >
@@ -84,6 +86,7 @@ exports[`renders the counter with title, count, add, subtract, and remove button
     161
   </span>
   <button
+    aria-label="Increment"
     className="Counter-button Counter-add"
     onClick={[Function]}
   >
