@@ -77,6 +77,11 @@ describe('with a counter', () => {
       subject();
       expect(counterStore.counters[id].count).toEqual(2);
     });
+
+    it('throws an error if the id is invalid', () => {
+      id = 'invalid';
+      return expect(subject()).rejects.toBeInstanceOf(Error);
+    });
   });
 
   describe('decrement', () => {
