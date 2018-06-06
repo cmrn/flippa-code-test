@@ -51,6 +51,8 @@ function handleApiResponse(countersArray) {
     return acc;
   }, {});
 
+  // Only replace the existing counters if they've changed, to
+  // prevent unnecessary renders
   if(!equal(counterStore.counters, newCounters)) {
     counterStore.counters = newCounters;
   }
