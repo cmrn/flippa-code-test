@@ -4,16 +4,12 @@ import { view } from 'react-easy-state';
 import counterStore from '../counterStore';
 
 class AppContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     counterStore.load();
   }
 
   render() {
-    return <App {...this.props} counters={counterStore.counters} />;
+    return <App {...this.props} counterIds={Object.keys(counterStore.counters)} />;
   }
 }
 

@@ -5,18 +5,18 @@ import './App.css';
 import AddCounter from '../containers/AddCounter';
 import Counter from '../containers/Counter';
 
-const App = ({ counters, className, ...props }) => (
+const App = ({ counterIds, className, ...props }) => (
   <div {...props} className={cnames("App", className)}>
     <h1>Counter App</h1>
 
     <AddCounter />
 
-    {Object.keys(counters).map(id => <Counter key={id} id={id} />)}
+    {counterIds.map(id => <Counter key={id} id={id} />)}
   </div>
 );
 
 App.propTypes = {
-  counters: PropTypes.object.isRequired,
+  counterIds: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   className: PropTypes.string,
 };
 

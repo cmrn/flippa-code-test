@@ -6,26 +6,23 @@ import AddCounter from './AddCounter';
 import Counter from '../containers/Counter';
 
 const dummyProps = {
-  counters: {}
+  counterIds: []
 }
 
 basicComponentTests(<App {...dummyProps} />);
 
 describe("with no counters", () => {
   it('renders the title and AddCounter component', () => {
-    const wrapper = shallow(<App {...dummyProps} counters={{}} />);
+    const wrapper = shallow(<App {...dummyProps} counterIds={[]} />);
     expect(wrapper).toMatchSnapshot();
   });
 });
 
 describe("with some counters", () => {
-  const counters = {
-    asdf: {id: "asdf", title: "bob", count: 1},
-    qwer: {id: "qwer", title: "steve", count: -1},
-  };
+  const counterIds = ['asdf', 'qwer'];
 
   it('renders the title, AddCounter, and each Counter', () => {
-    const wrapper = shallow(<App {...dummyProps} counters={counters} />);
+    const wrapper = shallow(<App {...dummyProps} counterIds={counterIds} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

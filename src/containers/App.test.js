@@ -21,8 +21,8 @@ it('calls load on the counterStore when mounted', () => {
   expect(counterStore.load.mock.calls.length).toBe(1);
 });
 
-it('passes counters from the store to the child component', async () => {
+it('passes counter IDs from the store to the child component', async () => {
   counterStore.counters = counters;
   const wrapper = shallow(<App />);
-  expect(wrapper.props().counters).toEqual(counters);
+  expect(wrapper.props().counterIds).toEqual(['asdf', 'qwer']);
 });
