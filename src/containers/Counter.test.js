@@ -4,10 +4,10 @@ import Counter from './Counter';
 import counterStore from '../counterStore';
 
 
-const data = [
-  {id: "asdf", title: "bob", count: 1},
-  {id: "qwer", title: "steve", count: -1}
-];
+const data = {
+  asdf: {id: "asdf", title: "bob", count: 1},
+  qwer: {id: "qwer", title: "steve", count: -1},
+};
 
 beforeEach(() => {
   counterStore.counters = data;

@@ -8,30 +8,38 @@ import {
 } from './api';
 
 const counterStore = store({
-  counters: [],
+  counters: {},
   async load() {
-    const newCounters = await getCounters();
-    counterStore.counters = newCounters;
+    const response = await getCounters();
+    handleApiResponse(response);
   },
   reset() {
-    counterStore.counters = []
+    counterStore.counters = {};
   },
   async add(title) {
-    const newCounters = await addCounter(title);
-    counterStore.counters = newCounters;
+    const response = await addCounter(title);
+    handleApiResponse(response);
   },
   async increment(id) {
-    const newCounters = await incrementCounter(id);
-    counterStore.counters = newCounters;
+    const response = await incrementCounter(id);
+    handleApiResponse(response);
   },
   async decrement(id) {
-    const newCounters = await decrementCounter(id);
-    counterStore.counters = newCounters;
+    const response = await decrementCounter(id);
+    handleApiResponse(response);
   },
   async delete(id) {
-    const newCounters = await deleteCounter(id);
-    counterStore.counters = newCounters;
+    const response = await deleteCounter(id);
+    handleApiResponse(response);
   },
 });
+
+function handleApiResponse(countersArray) {
+  const countersObj = countersArray.reduce((acc, counter) => {
+    acc[counter.id] = counter;
+    return acc;
+  }, {});
+  counterStore.counters = countersObj;
+};
 
 export default counterStore;

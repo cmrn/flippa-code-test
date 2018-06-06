@@ -5,6 +5,10 @@ const data = [
   {id: "asdf", title: "bob", count: 1},
   {id: "qwer", title: "steve", count: -1}
 ];
+const expectedCounters = {
+  asdf: {id: "asdf", title: "bob", count: 1},
+  qwer: {id: "qwer", title: "steve", count: -1},
+};
 const mockApi = () => jest.fn().mockImplementation(() => Promise.resolve(data));
 api.getCounters = mockApi();
 api.addCounter = mockApi();
@@ -17,13 +21,13 @@ afterEach(() => {
 });
 
 it('is initially empty', () => {
-  expect(counterStore.counters).toEqual([]);
+  expect(counterStore.counters).toEqual({});
 });
 
 describe('load', () => {
   it('loads data from the API into the store', async () => {
     await counterStore.load();
-    expect(counterStore.counters).toEqual(data);
+    expect(counterStore.counters).toEqual(expectedCounters);
     expect(api.getCounters.mock.calls.length).toEqual(1);
   });
 });
@@ -35,9 +39,9 @@ describe('add', () => {
   });
 
   it('updates the counters with the response', async () => {
-    expect(counterStore.counters).not.toEqual(data);
+    expect(counterStore.counters).not.toEqual(expectedCounters);
     await counterStore.add();
-    expect(counterStore.counters).toEqual(data);
+    expect(counterStore.counters).toEqual(expectedCounters);
   });
 });
 
@@ -50,9 +54,9 @@ describe('increment', () => {
   });
 
   it('updates the counters with the response', async () => {
-    expect(counterStore.counters).not.toEqual(data);
+    expect(counterStore.counters).not.toEqual(expectedCounters);
     await counterStore.increment('aaa');
-    expect(counterStore.counters).toEqual(data);
+    expect(counterStore.counters).toEqual(expectedCounters);
   });
 });
 
@@ -65,9 +69,9 @@ describe('decrement', () => {
   });
 
   it('updates the counters with the response', async () => {
-    expect(counterStore.counters).not.toEqual(data);
+    expect(counterStore.counters).not.toEqual(expectedCounters);
     await counterStore.decrement('aaa');
-    expect(counterStore.counters).toEqual(data);
+    expect(counterStore.counters).toEqual(expectedCounters);
   });
 });
 
@@ -80,8 +84,8 @@ describe('delete', () => {
   });
 
   it('updates the counters with the response', async () => {
-    expect(counterStore.counters).not.toEqual(data);
+    expect(counterStore.counters).not.toEqual(expectedCounters);
     await counterStore.delete('aaa');
-    expect(counterStore.counters).toEqual(data);
+    expect(counterStore.counters).toEqual(expectedCounters);
   });
 });

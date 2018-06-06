@@ -10,12 +10,12 @@ const App = ({ counters, onAdd }) => (
 
     <AddCounter onAdd={onAdd} />
 
-    {counters.map(counter => <Counter key={counter.id} id={counter.id} />)}
+    {Object.keys(counters).map(id => <Counter key={id} id={id} />)}
   </div>
 );
 
 App.propTypes = {
-  counters: PropTypes.array.isRequired,
+  counters: PropTypes.object.isRequired,
   onAdd: PropTypes.func.isRequired,
 };
 

@@ -4,7 +4,7 @@ import { view } from 'react-easy-state';
 import counterStore from '../counterStore';
 
 const CounterContainer = ({ id }) => {
-  const counter = counterStore.counters.find(c => c.id === id);
+  const counter = counterStore.counters[id];
   return (
     <Counter
       title={counter.title}
