@@ -8,7 +8,7 @@ basicComponentTests(<Total />);
 
 describe('when the store is empty', () => {
   beforeEach(() => {
-    counterStore.reset();
+    counterStore.counters = {};
   });
   
   it('sets total to 0', async () => {

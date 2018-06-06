@@ -5,7 +5,7 @@ import App from './App';
 import counterStore from '../counterStore';
 
 beforeEach(() => {
-  counterStore.reset();
+  counterStore.counters = {};
   counterStore.load = jest.fn();
 });
 

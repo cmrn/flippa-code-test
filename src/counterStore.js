@@ -14,21 +14,18 @@ const counterStore = store({
     const response = await getCounters();
     handleApiResponse(response);
   },
-  reset() {
-    counterStore.counters = {};
-  },
   async add(title) {
     const response = await addCounter(title);
     handleApiResponse(response);
   },
   async increment(id) {
-    const counter = counterStore.get(id);
+    const counter = getOrDie(id);
     counter.count++;
     const response = await incrementCounter(id);
     handleApiResponse(response);
   },
   async decrement(id) {
-    const counter = counterStore.get(id);
+    const counter = getOrDie(id);
     counter.count--;
     const response = await decrementCounter(id);
     handleApiResponse(response);
@@ -38,11 +35,6 @@ const counterStore = store({
     const response = await deleteCounter(id);
     handleApiResponse(response);
   },
-  get(id) {
-    const counter = counterStore.counters[id];
-    if(!counter) throw new Error(`invalid counter id ${id}`);
-    return counter;
-  }
 });
 
 function handleApiResponse(countersArray) {
@@ -57,5 +49,11 @@ function handleApiResponse(countersArray) {
     counterStore.counters = newCounters;
   }
 };
+
+function getOrDie(id) {
+  const counter = counterStore.counters[id];
+  if(!counter) throw new Error(`invalid counter id ${id}`);
+  return counter;
+}
 
 export default counterStore;

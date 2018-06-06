@@ -17,7 +17,7 @@ api.decrementCounter = mockApi();
 api.deleteCounter = mockApi();
 
 afterEach(() => {
-  counterStore.reset();
+  counterStore.counters = {};
 });
 
 it('is initially empty', () => {

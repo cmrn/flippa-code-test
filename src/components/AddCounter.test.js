@@ -20,7 +20,7 @@ describe('with some text in the input field', () => {
     wrapper.find('.AddCounter-title').simulate('change', { target: { value: title }});
   });
 
-  it('the submit button is enabled', () => {
+  it('enables the submit button', () => {
     expect(wrapper.find('.AddCounter-button').props().disabled).toEqual(false);
   });
 
@@ -40,7 +40,7 @@ describe('with some text in the input field', () => {
 });
 
 describe('with an empty input field', () => {
-  it('the submit button is disabled', () => {
+  it('disables the submit button', () => {
     const wrapper = shallow(<AddCounter onAdd={() => {}} />);
     expect(wrapper.find('.AddCounter-button').props().disabled).toEqual(true);
   });

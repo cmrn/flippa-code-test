@@ -5,7 +5,7 @@ import counterStore from '../counterStore';
 
 const TotalContainer = (props) => {
   const total = Object.keys(counterStore.counters)
-    .map(k => counterStore.counters[k].count)
+    .map(key => counterStore.counters[key].count)
     .reduce((a, b) => a + b, 0);
   return <Total {...props} total={total} />
 };
