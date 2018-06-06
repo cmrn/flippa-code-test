@@ -1,10 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import basicComponentTests from '../basicComponentTests';
 import App from './App';
 import counterStore from '../counterStore';
 
 beforeEach(() => {
   counterStore.reset();
+  counterStore.load = jest.fn();
+  counterStore.add = jest.fn();
 });
 
 const counters = {
@@ -12,8 +15,7 @@ const counters = {
   qwer: {id: "qwer", title: "steve", count: -1},
 };
 
-counterStore.load = jest.fn();
-counterStore.add = jest.fn();
+basicComponentTests(<App />);
 
 it('calls load on the counterStore when mounted', () => {
   const wrapper = shallow(<App />);

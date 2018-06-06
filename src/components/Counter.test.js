@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import basicComponentTests from '../basicComponentTests';
 import Counter from './Counter';
-import { DESTRUCTION } from 'dns';
 
 const dummyProps = {
   title: 'A title',
@@ -10,6 +10,8 @@ const dummyProps = {
   onIncrement: () => {},
   onDelete: () => {},
 }
+
+basicComponentTests(<Counter {...dummyProps} />);
 
 it('renders the counter with title, count, add, subtract, and remove buttons', () => {
   const wrapper = shallow(<Counter {...dummyProps} />);
@@ -33,7 +35,6 @@ describe('when add button is pressed', () => {
     expect(handler.mock.calls.length).toBe(1);
   });
 });
-
 
 describe('when delete button is pressed', () => {
   it('calls onDelete handler', () => {

@@ -3,6 +3,7 @@
 exports[`with no counters renders the title and AddCounter component 1`] = `
 <div
   className="App"
+  onChange={[Function]}
 >
   <h1>
     Counter App
@@ -16,6 +17,7 @@ exports[`with no counters renders the title and AddCounter component 1`] = `
 exports[`with some counters renders the title, AddCounter, and each Counter 1`] = `
 <div
   className="App"
+  onChange={[Function]}
 >
   <h1>
     Counter App

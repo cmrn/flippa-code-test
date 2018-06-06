@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import basicComponentTests from '../basicComponentTests';
 import Counter from './Counter';
 import counterStore from '../counterStore';
 
@@ -16,6 +17,8 @@ beforeEach(() => {
   counterStore.decrement = jest.fn();
   counterStore.delete = jest.fn();
 });
+
+basicComponentTests(<Counter id='qwer' />);
 
 it('loads counter from counterStore by id', () => {
   const wrapper = shallow(<Counter id='qwer' />);

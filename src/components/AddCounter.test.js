@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import basicComponentTests from '../basicComponentTests';
 import AddCounter from './AddCounter';
+
+basicComponentTests(<AddCounter onAdd={() => {}} />);
 
 it('renders a text box and button', () => {
   const wrapper = shallow(<AddCounter onAdd={() => {}} />);

@@ -3,11 +3,12 @@ import Counter from '../components/Counter';
 import { view } from 'react-easy-state';
 import counterStore from '../counterStore';
 
-const CounterContainer = ({ id }) => {
+const CounterContainer = ({ id, ...props }) => {
   const counter = counterStore.counters[id];
   if(!counter) return null;
   return (
     <Counter
+      {...props}
       title={counter.title}
       count={counter.count}
       onIncrement={() => counterStore.increment(counter.id)}

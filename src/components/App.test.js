@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import basicComponentTests from '../basicComponentTests';
 import App from './App';
 import AddCounter from './AddCounter';
 import Counter from '../containers/Counter';
@@ -9,6 +10,8 @@ const dummyProps = {
   onAdd: () => {},
   onChange: () => {}
 }
+
+basicComponentTests(<App {...dummyProps} />);
 
 it("propogates the onAdd event", () => {
   const addHandler = jest.fn();

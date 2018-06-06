@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cnames from 'classnames';
 import './AddCounter.css';
 
 class AddCounter extends React.Component {
@@ -21,8 +22,9 @@ class AddCounter extends React.Component {
   }
 
   render() {
+    const { className, ...props} = this.props;
     return (
-      <form className="AddCounter" onSubmit={this.handleSubmit}>
+      <form {...props} className={cnames("AddCounter", className)} onSubmit={this.handleSubmit}>
         <input className="AddCounter-title" type="text" value={this.state.title} onChange={this.handleTitleChange} />
         <input className="AddCounter-button" type="submit" value="Add Counter" />
       </form>
@@ -32,6 +34,7 @@ class AddCounter extends React.Component {
 
 AddCounter.propTypes = {
   onAdd: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 export default AddCounter;

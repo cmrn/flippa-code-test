@@ -18,7 +18,7 @@ class AppContainer extends React.Component {
   }
 
   render() {
-    return <App 
+    return <App {...this.props}
       counters={counterStore.counters} 
       onAdd={this.handleAdd}
     />;
